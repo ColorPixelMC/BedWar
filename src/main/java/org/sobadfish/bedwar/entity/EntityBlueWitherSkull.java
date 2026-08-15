@@ -29,9 +29,32 @@ public class EntityBlueWitherSkull extends EntityProjectile implements EntityExp
 
     protected boolean canExplode;
 
-    @Getter
-    @Setter
+
     private PlayerInfo master;
+
+    public boolean isCritical() {
+        return critical;
+    }
+
+    public void setCritical(boolean critical) {
+        this.critical = critical;
+    }
+
+    public boolean isCanExplode() {
+        return canExplode;
+    }
+
+    public void setCanExplode(boolean canExplode) {
+        this.canExplode = canExplode;
+    }
+
+    public PlayerInfo getMaster() {
+        return master;
+    }
+
+    public void setMaster(PlayerInfo master) {
+        this.master = master;
+    }
 
     @Override
     public int getNetworkId() {

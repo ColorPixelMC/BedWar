@@ -22,7 +22,6 @@ import java.util.Map;
  * @author SoBadFish
  * 2022/1/2
  */
-@Data
 public class WorldInfoConfig {
 
     private String level;
@@ -127,7 +126,28 @@ public class WorldInfoConfig {
         return toPathWorld(roomName,levelName,levelName,isInit);
     }
 
-    public static boolean toPathWorld(String roomName,String levelName,String targetLevelName, boolean isInit){
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public void setWaitPosition(String waitPosition) {
+        this.waitPosition = waitPosition;
+    }
+
+    public ArrayList<ItemInfoConfig> getItemInfos() {
+        return itemInfos;
+    }
+
+    public void setItemInfos(ArrayList<ItemInfoConfig> itemInfos) {
+        this.itemInfos = itemInfos;
+    }
+
+    public static boolean toPathWorld(String roomName, String levelName, String targetLevelName, boolean isInit){
         try {
 
             File nameFile = new File(BedWarMain.getBedWarMain().getDataFolder() + File.separator + "rooms" + File.separator + roomName);

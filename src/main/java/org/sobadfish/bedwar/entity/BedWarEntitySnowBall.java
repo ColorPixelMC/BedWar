@@ -14,16 +14,29 @@ import org.sobadfish.bedwar.player.PlayerInfo;
  */
 public class BedWarEntitySnowBall extends EntitySnowball {
 
-    @Getter
-    @Setter
+
     private PlayerInfo master;
 
     public BedWarEntitySnowBall(FullChunk chunk, CompoundTag nbt) {
         super(chunk, nbt);
     }
 
-    @Getter
-    @Setter
+
     private IDropItem usedItem;
 
+    public PlayerInfo getMaster() {
+        return master;
+    }
+
+    public void setMaster(PlayerInfo master) {
+        this.master = master;
+    }
+
+    public IDropItem getUsedItem() {
+        return usedItem;
+    }
+
+    public void setUsedItem(IDropItem usedItem) {
+        this.usedItem = usedItem;
+    }
 }

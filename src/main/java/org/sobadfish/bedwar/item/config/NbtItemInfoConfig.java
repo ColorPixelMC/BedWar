@@ -21,9 +21,24 @@ public class NbtItemInfoConfig {
 
     public INbtItem name;
 
-    @Getter
+
     public Item item;
 
+    public INbtItem getName() {
+        return name;
+    }
+
+    public void setName(INbtItem name) {
+        this.name = name;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
     private NbtItemInfoConfig(INbtItem name, Item item){
         this.name = name;

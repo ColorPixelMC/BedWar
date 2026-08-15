@@ -56,6 +56,7 @@ import org.sobadfish.bedwar.panel.from.button.BaseIButton;
 import org.sobadfish.bedwar.panel.items.BasePlayPanelItemInstance;
 import org.sobadfish.bedwar.panel.items.NbtDefaultItem;
 import org.sobadfish.bedwar.panel.items.PlayerItem;
+import org.sobadfish.bedwar.listener.PartyListener;
 import org.sobadfish.bedwar.player.PlayerData;
 import org.sobadfish.bedwar.player.PlayerInfo;
 import org.sobadfish.bedwar.player.team.TeamInfo;
@@ -230,8 +231,56 @@ public class RoomManager implements Listener {
 
     private final Map<String, GameRoomConfig> roomConfig;
 
-    @Getter
+
     private final Map<String, GameRoom> rooms = new LinkedHashMap<>();
+
+    public static LanguageManager getLanguage() {
+        return language;
+    }
+
+    public static void setLanguage(LanguageManager language) {
+        RoomManager.language = language;
+    }
+
+    public static List<GameRoomConfig> getLockGame() {
+        return LOCK_GAME;
+    }
+
+    public static void setLockGame(List<GameRoomConfig> lockGame) {
+        LOCK_GAME = lockGame;
+    }
+
+    public LinkedHashMap<String, String> getPlayerJoin() {
+        return playerJoin;
+    }
+
+    public void setPlayerJoin(LinkedHashMap<String, String> playerJoin) {
+        this.playerJoin = playerJoin;
+    }
+
+    public static LinkedHashMap<String, PlayerInfo> getCacheInfo() {
+        return CACHE_INFO;
+    }
+
+    public static void setCacheInfo(LinkedHashMap<String, PlayerInfo> cacheInfo) {
+        CACHE_INFO = cacheInfo;
+    }
+
+    public Map<String, GameRoomConfig> getRoomConfig() {
+        return roomConfig;
+    }
+
+    public Map<String, GameRoom> getRooms() {
+        return rooms;
+    }
+
+    public boolean isDebugFastPlace() {
+        return debugFastPlace;
+    }
+
+    public void setDebugFastPlace(boolean debugFastPlace) {
+        this.debugFastPlace = debugFastPlace;
+    }
 
     public boolean hasRoom(String room){
         return roomConfig.containsKey(room);
@@ -752,6 +801,9 @@ public class RoomManager implements Listener {
     public void onJoin(PlayerJoinEvent event){
         //TODO 断线重连 上线
         Player player = event.getPlayer();
+        if(PartyListener.tryJoinPendingParty(player)){
+            return;
+        }
         if(playerJoin.containsKey(player.getName())){
             player.setFoodEnabled(false);
             player.setGamemode(2);

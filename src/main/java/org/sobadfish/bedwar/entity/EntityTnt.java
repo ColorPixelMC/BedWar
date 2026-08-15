@@ -68,9 +68,24 @@ public class EntityTnt extends EntityProjectile implements EntityExplosive {
     protected int fuse;
 
 
-    @Getter
-    @Setter
+
     public PlayerInfo target;
+
+    public int getFuse() {
+        return fuse;
+    }
+
+    public void setFuse(int fuse) {
+        this.fuse = fuse;
+    }
+
+    public PlayerInfo getTarget() {
+        return target;
+    }
+
+    public void setTarget(PlayerInfo target) {
+        this.target = target;
+    }
 
     public EntityTnt(FullChunk fullChunk, CompoundTag compoundTag, PlayerInfo playerInfo, int fuse) {
         super(fullChunk, compoundTag);

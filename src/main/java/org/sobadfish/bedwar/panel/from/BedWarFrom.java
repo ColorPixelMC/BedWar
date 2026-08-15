@@ -14,7 +14,6 @@ import java.util.List;
  * @author SoBadFish
  * 2022/1/12
  */
-@Data
 public class BedWarFrom {
 
     private final int id;
@@ -61,5 +60,33 @@ public class BedWarFrom {
     @Override
     public String toString() {
         return id+" -> "+baseIButtoms;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public List<BaseIButton> getBaseIButtoms() {
+        return baseIButtoms;
+    }
+
+    public void setBaseIButtoms(List<BaseIButton> baseIButtoms) {
+        this.baseIButtoms = baseIButtoms;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
     }
 }

@@ -9,7 +9,7 @@ import org.sobadfish.bedwar.event.PlayerLevelChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-@Data
+
 public class PlayerData {
 
     private String name = "";
@@ -33,6 +33,34 @@ public class PlayerData {
             c += data.getInt(dataType);
         }
         return c;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public List<RoomData> getRoomData() {
+        return roomData;
+    }
+
+    public void setRoomData(List<RoomData> roomData) {
+        this.roomData = roomData;
     }
 
     public int getExp() {

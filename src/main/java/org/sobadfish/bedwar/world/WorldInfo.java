@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * @author SoBadFish
  * 2022/1/2
  */
-@Data
 public class WorldInfo {
 
     private GameRoom room;
@@ -60,7 +59,45 @@ public class WorldInfo {
         return isClose;
     }
 
+    public GameRoom getRoom() {
+        return room;
+    }
 
+    public void setRoom(GameRoom room) {
+        this.room = room;
+    }
+
+    public ArrayList<ItemInfo> getInfos() {
+        return infos;
+    }
+
+    public void setInfos(ArrayList<ItemInfo> infos) {
+        this.infos = infos;
+    }
+
+    public boolean isStart() {
+        return isStart;
+    }
+
+    public void setStart(boolean start) {
+        isStart = start;
+    }
+
+    public WorldInfoConfig getConfig() {
+        return config;
+    }
+
+    public void setConfig(WorldInfoConfig config) {
+        this.config = config;
+    }
+
+    public ArrayList<Block> getPlaceBlock() {
+        return placeBlock;
+    }
+
+    public void setPlaceBlock(ArrayList<Block> placeBlock) {
+        this.placeBlock = placeBlock;
+    }
 
     /**
      * 定时任务

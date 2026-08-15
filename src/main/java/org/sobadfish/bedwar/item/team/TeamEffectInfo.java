@@ -8,7 +8,7 @@ import lombok.Setter;
  * @author SoBadFish
  * 2022/1/6
  */
-@Data
+
 public class TeamEffectInfo {
 
     private final BaseTeamEffect effect;
@@ -27,6 +27,15 @@ public class TeamEffectInfo {
     }
 
 
+    public int getLevel() {
+        return level;
+    }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
+    public BaseTeamEffect getEffect() {
+        return effect;
+    }
 }

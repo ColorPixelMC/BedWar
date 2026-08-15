@@ -24,7 +24,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author SoBadFish
  * 2022/1/2
  */
-@Data
+
 public class GameRoomConfig implements Cloneable{
     /**
      * 房间名
@@ -664,5 +664,390 @@ public class GameRoomConfig implements Cloneable{
     @Override
     public int hashCode() {
         return name.hashCode();
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public WorldInfoConfig getWorldInfo() {
+        return worldInfo;
+    }
+
+    public void setWorldInfo(WorldInfoConfig worldInfo) {
+        this.worldInfo = worldInfo;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int getWaitTime() {
+        return waitTime;
+    }
+
+    public void setWaitTime(int waitTime) {
+        this.waitTime = waitTime;
+    }
+
+    public int getMaxWaitTime() {
+        return maxWaitTime;
+    }
+
+    public void setMaxWaitTime(int maxWaitTime) {
+        this.maxWaitTime = maxWaitTime;
+    }
+
+    public int getMinPlayerSize() {
+        return minPlayerSize;
+    }
+
+    public void setMinPlayerSize(int minPlayerSize) {
+        this.minPlayerSize = minPlayerSize;
+    }
+
+    public int getMaxPlayerSize() {
+        return maxPlayerSize;
+    }
+
+    public void setMaxPlayerSize(int maxPlayerSize) {
+        this.maxPlayerSize = maxPlayerSize;
+    }
+
+    public LinkedHashMap<String, ShopItemInfo> getShops() {
+        return shops;
+    }
+
+    public void setShops(LinkedHashMap<String, ShopItemInfo> shops) {
+        this.shops = shops;
+    }
+
+    public List<TeamConfig> getTeamCfg() {
+        return teamCfg;
+    }
+
+    public void setTeamCfg(List<TeamConfig> teamCfg) {
+        this.teamCfg = teamCfg;
+    }
+
+    public ArrayList<TeamInfoConfig> getTeamConfigs() {
+        return teamConfigs;
+    }
+
+    public void setTeamConfigs(ArrayList<TeamInfoConfig> teamConfigs) {
+        this.teamConfigs = teamConfigs;
+    }
+
+    public MoneyItemInfo getMoneyItem() {
+        return moneyItem;
+    }
+
+    public void setMoneyItem(MoneyItemInfo moneyItem) {
+        this.moneyItem = moneyItem;
+    }
+
+    public NbtItemInfo getNbtItemInfo() {
+        return nbtItemInfo;
+    }
+
+    public void setNbtItemInfo(NbtItemInfo nbtItemInfo) {
+        this.nbtItemInfo = nbtItemInfo;
+    }
+
+    public BedWarMain.UiType getUiType() {
+        return uiType;
+    }
+
+    public void setUiType(BedWarMain.UiType uiType) {
+        this.uiType = uiType;
+    }
+
+    public float getFireballKnockBack() {
+        return fireballKnockBack;
+    }
+
+    public void setFireballKnockBack(float fireballKnockBack) {
+        this.fireballKnockBack = fireballKnockBack;
+    }
+
+    public float getTntKnockBack() {
+        return tntKnockBack;
+    }
+
+    public void setTntKnockBack(float tntKnockBack) {
+        this.tntKnockBack = tntKnockBack;
+    }
+
+    public float getKillItem() {
+        return killItem;
+    }
+
+    public void setKillItem(float killItem) {
+        this.killItem = killItem;
+    }
+
+    public boolean isHasWatch() {
+        return hasWatch;
+    }
+
+    public void setHasWatch(boolean hasWatch) {
+        this.hasWatch = hasWatch;
+    }
+
+    public boolean isEnableItemEqual() {
+        return enableItemEqual;
+    }
+
+    public void setEnableItemEqual(boolean enableItemEqual) {
+        this.enableItemEqual = enableItemEqual;
+    }
+
+    public boolean isDisplayItemName() {
+        return displayItemName;
+    }
+
+    public void setDisplayItemName(boolean displayItemName) {
+        this.displayItemName = displayItemName;
+    }
+
+    public boolean isEnableFood() {
+        return enableFood;
+    }
+
+    public void setEnableFood(boolean enableFood) {
+        this.enableFood = enableFood;
+    }
+
+    public boolean isFastPlace() {
+        return fastPlace;
+    }
+
+    public void setFastPlace(boolean fastPlace) {
+        this.fastPlace = fastPlace;
+    }
+
+    public int getFastPlaceCount() {
+        return fastPlaceCount;
+    }
+
+    public void setFastPlaceCount(int fastPlaceCount) {
+        this.fastPlaceCount = fastPlaceCount;
+    }
+
+    public int getCallbackY() {
+        return callbackY;
+    }
+
+    public void setCallbackY(int callbackY) {
+        this.callbackY = callbackY;
+    }
+
+    public KnockConfig getKnockConfig() {
+        return knockConfig;
+    }
+
+    public void setKnockConfig(KnockConfig knockConfig) {
+        this.knockConfig = knockConfig;
+    }
+
+    public boolean isInventoryUnBreakable() {
+        return inventoryUnBreakable;
+    }
+
+    public void setInventoryUnBreakable(boolean inventoryUnBreakable) {
+        this.inventoryUnBreakable = inventoryUnBreakable;
+    }
+
+    public String getGameRoomMoney() {
+        return gameRoomMoney;
+    }
+
+    public void setGameRoomMoney(String gameRoomMoney) {
+        this.gameRoomMoney = gameRoomMoney;
+    }
+
+    public int getTeamShopEntityId() {
+        return teamShopEntityId;
+    }
+
+    public void setTeamShopEntityId(int teamShopEntityId) {
+        this.teamShopEntityId = teamShopEntityId;
+    }
+
+    public int getItemShopEntityId() {
+        return itemShopEntityId;
+    }
+
+    public void setItemShopEntityId(int itemShopEntityId) {
+        this.itemShopEntityId = itemShopEntityId;
+    }
+
+    public int getMinutesExp() {
+        return minutesExp;
+    }
+
+    public void setMinutesExp(int minutesExp) {
+        this.minutesExp = minutesExp;
+    }
+
+    public int getDeathIcon() {
+        return deathIcon;
+    }
+
+    public void setDeathIcon(int deathIcon) {
+        this.deathIcon = deathIcon;
+    }
+
+    public ArrayList<String> getBanCommand() {
+        return banCommand;
+    }
+
+    public void setBanCommand(ArrayList<String> banCommand) {
+        this.banCommand = banCommand;
+    }
+
+    public ArrayList<String> getQuitRoomCommand() {
+        return quitRoomCommand;
+    }
+
+    public void setQuitRoomCommand(ArrayList<String> quitRoomCommand) {
+        this.quitRoomCommand = quitRoomCommand;
+    }
+
+    public boolean isAutomaticNextRound() {
+        return isAutomaticNextRound;
+    }
+
+    public void setAutomaticNextRound(boolean automaticNextRound) {
+        isAutomaticNextRound = automaticNextRound;
+    }
+
+    public ArrayList<String> getVictoryCommand() {
+        return victoryCommand;
+    }
+
+    public void setVictoryCommand(ArrayList<String> victoryCommand) {
+        this.victoryCommand = victoryCommand;
+    }
+
+    public ArrayList<String> getDefeatCommand() {
+        return defeatCommand;
+    }
+
+    public void setDefeatCommand(ArrayList<String> defeatCommand) {
+        this.defeatCommand = defeatCommand;
+    }
+
+    public ArrayList<String> getGameStartMessage() {
+        return gameStartMessage;
+    }
+
+    public void setGameStartMessage(ArrayList<String> gameStartMessage) {
+        this.gameStartMessage = gameStartMessage;
+    }
+
+    public GameRoomEventConfig getEventConfig() {
+        return eventConfig;
+    }
+
+    public void setEventConfig(GameRoomEventConfig eventConfig) {
+        this.eventConfig = eventConfig;
+    }
+
+    public GameRoomEventConfig getEventListConfig() {
+        return eventListConfig;
+    }
+
+    public void setEventListConfig(GameRoomEventConfig eventListConfig) {
+        this.eventListConfig = eventListConfig;
+    }
+
+    public List<FloatTextInfoConfig> getFloatTextInfoConfigs() {
+        return floatTextInfoConfigs;
+    }
+
+    public void setFloatTextInfoConfigs(List<FloatTextInfoConfig> floatTextInfoConfigs) {
+        this.floatTextInfoConfigs = floatTextInfoConfigs;
+    }
+
+    public LinkedHashMap<String, String> getFloatBlockConfig() {
+        return floatBlockConfig;
+    }
+
+    public void setFloatBlockConfig(LinkedHashMap<String, String> floatBlockConfig) {
+        this.floatBlockConfig = floatBlockConfig;
+    }
+
+    public ProtectedBedConfig getProtectedBedConfig() {
+        return protectedBedConfig;
+    }
+
+    public void setProtectedBedConfig(ProtectedBedConfig protectedBedConfig) {
+        this.protectedBedConfig = protectedBedConfig;
+    }
+
+    public boolean isEnableCustomTag() {
+        return enableCustomTag;
+    }
+
+    public void setEnableCustomTag(boolean enableCustomTag) {
+        this.enableCustomTag = enableCustomTag;
+    }
+
+    public boolean isEnableAutoDisplayFloat() {
+        return enableAutoDisplayFloat;
+    }
+
+    public void setEnableAutoDisplayFloat(boolean enableAutoDisplayFloat) {
+        this.enableAutoDisplayFloat = enableAutoDisplayFloat;
+    }
+
+    public String getAutoDisplayFloat() {
+        return autoDisplayFloat;
+    }
+
+    public void setAutoDisplayFloat(String autoDisplayFloat) {
+        this.autoDisplayFloat = autoDisplayFloat;
+    }
+
+    public String getCustomNamedTag() {
+        return customNamedTag;
+    }
+
+    public void setCustomNamedTag(String customNamedTag) {
+        this.customNamedTag = customNamedTag;
+    }
+
+    public int getTntDamage() {
+        return tntDamage;
+    }
+
+    public void setTntDamage(int tntDamage) {
+        this.tntDamage = tntDamage;
+    }
+
+    public int getTntExplodeTime() {
+        return tntExplodeTime;
+    }
+
+    public void setTntExplodeTime(int tntExplodeTime) {
+        this.tntExplodeTime = tntExplodeTime;
+    }
+
+    public List<ShopInfoConfig.ShopItemClassify> getShopItemClassifies() {
+        return shopItemClassifies;
+    }
+
+    public void setShopItemClassifies(List<ShopInfoConfig.ShopItemClassify> shopItemClassifies) {
+        this.shopItemClassifies = shopItemClassifies;
     }
 }

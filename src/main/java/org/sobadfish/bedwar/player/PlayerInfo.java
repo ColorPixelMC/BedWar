@@ -20,12 +20,9 @@ import cn.nukkit.network.protocol.MobArmorEquipmentPacket;
 import cn.nukkit.network.protocol.OnScreenTextureAnimationPacket;
 import cn.nukkit.potion.Effect;
 import cn.nukkit.utils.TextFormat;
-import de.theamychan.scoreboard.api.ScoreboardAPI;
-import de.theamychan.scoreboard.network.DisplaySlot;
-import de.theamychan.scoreboard.network.Scoreboard;
-import de.theamychan.scoreboard.network.ScoreboardDisplay;
-import lombok.Getter;
-import lombok.Setter;
+import cn.nukkit.network.protocol.types.DisplaySlot;
+import cn.nukkit.scoreboard.scoreboard.Scoreboard;
+import me.coolmagic233.particles.Particles;
 import org.sobadfish.bedwar.BedWarMain;
 import org.sobadfish.bedwar.entity.IronGolem;
 import org.sobadfish.bedwar.event.PlayerGameDeathEvent;
@@ -48,8 +45,6 @@ import java.util.*;
 /**
  * @author SoBadFish
  */
-@Getter
-@Setter
 public class PlayerInfo {
 
     public int killCount = 0;
@@ -125,7 +120,225 @@ public class PlayerInfo {
     }
 
 
+    public int getKillCount() {
+        return killCount;
+    }
 
+    public void setKillCount(int killCount) {
+        this.killCount = killCount;
+    }
+
+    public int getBedBreakCount() {
+        return bedBreakCount;
+    }
+
+    public void setBedBreakCount(int bedBreakCount) {
+        this.bedBreakCount = bedBreakCount;
+    }
+
+    public int getEndKillCount() {
+        return endKillCount;
+    }
+
+    public void setEndKillCount(int endKillCount) {
+        this.endKillCount = endKillCount;
+    }
+
+    public int getDeathCount() {
+        return deathCount;
+    }
+
+    public void setDeathCount(int deathCount) {
+        this.deathCount = deathCount;
+    }
+
+    public int getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(int updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public int getAssists() {
+        return assists;
+    }
+
+    public void setAssists(int assists) {
+        this.assists = assists;
+    }
+
+    public EntityHuman getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(EntityHuman player) {
+        this.player = player;
+    }
+
+    public PlayerType getPlayerType() {
+        return playerType;
+    }
+
+    public void setPlayerType(PlayerType playerType) {
+        this.playerType = playerType;
+    }
+
+    public GameRoom getGameRoom() {
+        return gameRoom;
+    }
+
+    public void setGameRoom(GameRoom gameRoom) {
+        this.gameRoom = gameRoom;
+    }
+
+    public boolean isCancel() {
+        return cancel;
+    }
+
+    public void setCancel(boolean cancel) {
+        this.cancel = cancel;
+    }
+
+    public boolean isDisable() {
+        return disable;
+    }
+
+    public void setDisable(boolean disable) {
+        this.disable = disable;
+    }
+
+    public PlayerInfo getDamageByInfo() {
+        return damageByInfo;
+    }
+
+    public LinkedHashMap<PlayerInfo, Long> getAssistsPlayers() {
+        return assistsPlayers;
+    }
+
+    public void setAssistsPlayers(LinkedHashMap<PlayerInfo, Long> assistsPlayers) {
+        this.assistsPlayers = assistsPlayers;
+    }
+
+    public List<Integer> getBuyArmorId() {
+        return buyArmorId;
+    }
+
+    public void setBuyArmorId(List<Integer> buyArmorId) {
+        this.buyArmorId = buyArmorId;
+    }
+
+    public Map<Integer, Item> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Map<Integer, Item> inventory) {
+        this.inventory = inventory;
+    }
+
+    public int getDamageTime() {
+        return damageTime;
+    }
+
+    public void setDamageTime(int damageTime) {
+        this.damageTime = damageTime;
+    }
+
+    public boolean isSpawnFire() {
+        return isSpawnFire;
+    }
+
+    public void setSpawnFire(boolean spawnFire) {
+        isSpawnFire = spawnFire;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public boolean isInvisibility() {
+        return isInvisibility;
+    }
+
+    public void setInvisibility(boolean invisibility) {
+        isInvisibility = invisibility;
+    }
+
+    public int getLastGameMode() {
+        return lastGameMode;
+    }
+
+    public void setLastGameMode(int lastGameMode) {
+        this.lastGameMode = lastGameMode;
+    }
+
+    public int getLastExp() {
+        return lastExp;
+    }
+
+    public void setLastExp(int lastExp) {
+        this.lastExp = lastExp;
+    }
+
+    public boolean isFastPlace() {
+        return fastPlace;
+    }
+
+    public void setFastPlace(boolean fastPlace) {
+        this.fastPlace = fastPlace;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    public Map<Integer, Item> geteInventory() {
+        return eInventory;
+    }
+
+    public void seteInventory(Map<Integer, Item> eInventory) {
+        this.eInventory = eInventory;
+    }
+
+    public LinkedHashMap<Integer, Item> getArmor() {
+        return armor;
+    }
+
+    public void setArmor(LinkedHashMap<Integer, Item> armor) {
+        this.armor = armor;
+    }
+
+    public int getSpawnTime() {
+        return spawnTime;
+    }
+
+    public void setSpawnTime(int spawnTime) {
+        this.spawnTime = spawnTime;
+    }
+
+    public int getLoadTime() {
+        return loadTime;
+    }
+
+    public void setLoadTime(int loadTime) {
+        this.loadTime = loadTime;
+    }
+
+    public boolean isSendkey() {
+        return isSendkey;
+    }
+
+    public void setSendkey(boolean sendkey) {
+        isSendkey = sendkey;
+    }
 
     public void setLeave(boolean leave) {
         isLeave = leave;
@@ -369,13 +582,12 @@ public class PlayerInfo {
 
     public void removeScoreBoard(){
         if(gameRoom != null) {
-            if (gameRoom.getScoreboards().containsKey(this)) {
-                if (getPlayer() instanceof Player) {
-                    ScoreboardAPI.removeScorebaord((Player) getPlayer(),
-                            gameRoom.getScoreboards().get(this));
-                    gameRoom.getScoreboards().remove(this);
+            if (getPlayer() instanceof Player) {
+                Scoreboard scoreboard = gameRoom.getScoreboards().get(this);
+                if (scoreboard != null) {
+                    scoreboard.removeViewer((Player) getPlayer(), DisplaySlot.SIDEBAR);
                 }
-
+                gameRoom.getScoreboards().remove(this);
             }
         }
     }
@@ -434,22 +646,18 @@ public class PlayerInfo {
             }
             if (((Player) getPlayer()).isOnline()) {
                 try {
-                    Scoreboard scoreboard = ScoreboardAPI.createScoreboard();
-                    String title = message.getTitle();
-                    ScoreboardDisplay scoreboardDisplay = scoreboard.addDisplay(DisplaySlot.SIDEBAR,
-                            "dumy", TextFormat.colorize('&', title));
-
+                    String title = TextFormat.colorize('&', message.getTitle());
+                    Scoreboard scoreboard = new Scoreboard("dummy", title, "dummy");
                     ArrayList<String> list = message.getLore();
                     for (int line = 0; line < list.size(); line++) {
                         String s = list.get(line);
-
-                        scoreboardDisplay.addLine(TextFormat.colorize('&', s), line);
+                        scoreboard.addLine(TextFormat.colorize('&', s), line);
                     }
                     try {
-                        gameRoom.getScoreboards().get(this).hideFor((Player) player);
+                        gameRoom.getScoreboards().get(this).removeViewer((Player) player, DisplaySlot.SIDEBAR);
                     } catch (Exception ignored) {
                     }
-                    scoreboard.showFor((Player) player);
+                    scoreboard.addViewer((Player) player, DisplaySlot.SIDEBAR);
                     gameRoom.getScoreboards().put(this, scoreboard);
                 } catch (Exception ignored) {
                 }
@@ -732,11 +940,6 @@ public class PlayerInfo {
                 player.teleport(getGameRoom().getRoomConfig().getWorldInfo().getWaitPosition());
             }
         }
-        try{
-            Class.forName("de.theamychan.scoreboard.api.ScoreboardAPI");
-        }catch (Exception e){
-            return;
-        }
         if(playerType != PlayerType.LEAVE){
             //TODO 计分板的一些内容
 
@@ -871,7 +1074,7 @@ public class PlayerInfo {
 
             }
 
-
+            Particles.getInstance().playKillParticle((Player) damageByInfo.getPlayer(),getPlayer());
 
         }
         if(end && getGameRoom().getType() != GameRoom.GameType.END){

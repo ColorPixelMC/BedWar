@@ -10,8 +10,7 @@ import lombok.Setter;
  */
 public abstract class BaseTeamEffect implements Cloneable{
 
-    @Getter
-    @Setter
+
     private int maxLevel;
 
     public int level = 1;
@@ -37,5 +36,21 @@ public abstract class BaseTeamEffect implements Cloneable{
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    public int getMaxLevel() {
+        return maxLevel;
+    }
+
+    public void setMaxLevel(int maxLevel) {
+        this.maxLevel = maxLevel;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

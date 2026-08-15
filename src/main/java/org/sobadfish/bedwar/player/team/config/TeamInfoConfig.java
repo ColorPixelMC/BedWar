@@ -19,7 +19,7 @@ import java.util.Map;
  * @author SoBadFish
  * 2022/1/3
  */
-@Data
+
 public class TeamInfoConfig {
 
     private TeamConfig teamConfig;
@@ -100,5 +100,37 @@ public class TeamInfoConfig {
         }
         config.put("village",vil);
         return config;
+    }
+
+    public TeamConfig getTeamConfig() {
+        return teamConfig;
+    }
+
+    public void setTeamConfig(TeamConfig teamConfig) {
+        this.teamConfig = teamConfig;
+    }
+
+    public BlockFace getBedFace() {
+        return bedFace;
+    }
+
+    public void setBedFace(BlockFace bedFace) {
+        this.bedFace = bedFace;
+    }
+
+    public void setBedPosition(String bedPosition) {
+        this.bedPosition = bedPosition;
+    }
+
+    public void setSpawnPosition(String spawnPosition) {
+        this.spawnPosition = spawnPosition;
+    }
+
+    public LinkedHashMap<String, String> getVillage() {
+        return village;
+    }
+
+    public void setVillage(LinkedHashMap<String, String> village) {
+        this.village = village;
     }
 }

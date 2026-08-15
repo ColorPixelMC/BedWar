@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author SoBadFish
  * 2022/1/12
  */
-@Data
+
 public class WorldRoom {
 
     private String name;
@@ -26,5 +26,27 @@ public class WorldRoom {
         this.imageData = imageData;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ElementButtonImageData getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(ElementButtonImageData imageData) {
+        this.imageData = imageData;
+    }
+
+    public ArrayList<GameRoomConfig> getRoomConfigs() {
+        return roomConfigs;
+    }
+
+    public void setRoomConfigs(ArrayList<GameRoomConfig> roomConfigs) {
+        this.roomConfigs = roomConfigs;
+    }
 }

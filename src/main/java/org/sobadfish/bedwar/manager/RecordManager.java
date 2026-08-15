@@ -172,7 +172,7 @@ public class RecordManager {
     }
 
 
-    @Data
+
     public static class OK {
         private boolean isOK;
 
@@ -183,7 +183,21 @@ public class RecordManager {
             this.message = message;
         }
 
+        public boolean isOK() {
+            return isOK;
+        }
 
+        public void setOK(boolean OK) {
+            isOK = OK;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
     }
 
 }

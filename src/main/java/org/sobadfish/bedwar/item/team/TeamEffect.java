@@ -8,8 +8,7 @@ import lombok.Setter;
  * @author SoBadFish
  * 2022/1/6
  */
-@Setter
-@Getter
+
 public class TeamEffect extends BaseTeamEffect
 {
 
@@ -20,7 +19,13 @@ public class TeamEffect extends BaseTeamEffect
         this.effect = effect;
     }
 
+    public Effect getEffect() {
+        return effect;
+    }
 
+    public void setEffect(Effect effect) {
+        this.effect = effect;
+    }
 
     @Override
     public boolean equals(Object obj) {

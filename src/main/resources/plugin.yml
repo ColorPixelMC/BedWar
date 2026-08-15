@@ -10,10 +10,7 @@ description: "起床战争小游戏插件"
 
 softdepend:
   - RsNPC
-  - ScoreboardPlugin
   - AutoUpData
   - Tips
   - Ghosty
-
-loadbefore:
-  - ScoreboardPlugin
+  - Parties

@@ -18,8 +18,6 @@ public class TopItem {
 
     public String position;
 
-    @Getter
-    @Setter
     public String title = "";
 
     public String room;
@@ -112,4 +110,35 @@ public class TopItem {
         return false;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTopType(String topType) {
+        this.topType = topType;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
 }

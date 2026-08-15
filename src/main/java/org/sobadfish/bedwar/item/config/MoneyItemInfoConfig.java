@@ -13,7 +13,7 @@ import java.util.Map;
  * @author SoBadFish
  * 2022/1/3
  */
-@Data
+
 public class MoneyItemInfoConfig {
 
     private String name;
@@ -32,6 +32,33 @@ public class MoneyItemInfoConfig {
     }
 
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCustomName() {
+        return customName;
+    }
+
+    public void setCustomName(String customName) {
+        this.customName = customName;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public double getExp() {
+        return exp;
+    }
+
+    public void setExp(double exp) {
+        this.exp = exp;
+    }
 
     public Item getItem() {
         Item item = new Item(this.item.getId(),this.item.getDamage());

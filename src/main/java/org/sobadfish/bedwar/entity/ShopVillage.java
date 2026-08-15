@@ -22,11 +22,34 @@ import org.sobadfish.bedwar.shop.item.ShopItemInfo;
 public class ShopVillage extends EntityCreature {
 
 
-    @Getter
-    @Setter
+
     private ShopItemInfo infoConfig;
 
     private GameRoomConfig room;
+
+    public ShopItemInfo getInfoConfig() {
+        return infoConfig;
+    }
+
+    public void setInfoConfig(ShopItemInfo infoConfig) {
+        this.infoConfig = infoConfig;
+    }
+
+    public GameRoomConfig getRoom() {
+        return room;
+    }
+
+    public void setRoom(GameRoomConfig room) {
+        this.room = room;
+    }
+
+    public int getEntityId() {
+        return entityId;
+    }
+
+    public void setEntityId(int entityId) {
+        this.entityId = entityId;
+    }
 
     private int entityId;
     @Override

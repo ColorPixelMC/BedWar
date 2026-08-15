@@ -31,9 +31,60 @@ public abstract class BaseEntity extends EntityCreature {
     //锁定生物
     protected EntityCreature followTarget = null;
 
-    @Getter
-    @Setter
+
     private boolean movement = true;
+
+    public int getStayTime() {
+        return stayTime;
+    }
+
+    public void setStayTime(int stayTime) {
+        this.stayTime = stayTime;
+    }
+
+    public int getMoveTime() {
+        return moveTime;
+    }
+
+    public void setMoveTime(int moveTime) {
+        this.moveTime = moveTime;
+    }
+
+    public Vector3 getTarget() {
+        return target;
+    }
+
+    public void setTarget(Vector3 target) {
+        this.target = target;
+    }
+
+    public EntityCreature getFollowTarget() {
+        return followTarget;
+    }
+
+    public boolean isMovement() {
+        return movement;
+    }
+
+    public void setMovement(boolean movement) {
+        this.movement = movement;
+    }
+
+    public int getAttackDelay() {
+        return attackDelay;
+    }
+
+    public void setAttackDelay(int attackDelay) {
+        this.attackDelay = attackDelay;
+    }
+
+    public int getDamageDelay() {
+        return damageDelay;
+    }
+
+    public void setDamageDelay(int damageDelay) {
+        this.damageDelay = damageDelay;
+    }
 
     protected int attackDelay = 0;
 

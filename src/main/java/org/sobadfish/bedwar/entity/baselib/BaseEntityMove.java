@@ -27,8 +27,7 @@ public abstract class BaseEntityMove extends BaseEntity {
 
     private boolean canAttack = true;
 
-    @Getter
-    @Setter
+
     private PlayerInfo master;
     public BaseEntityMove(FullChunk chunk, CompoundTag nbt) {
         super(chunk, nbt);
@@ -36,6 +35,22 @@ public abstract class BaseEntityMove extends BaseEntity {
 
     public BaseEntityMove(PlayerInfo master,FullChunk chunk, CompoundTag nbt) {
         super(chunk, nbt);
+        this.master = master;
+    }
+
+    public boolean isCanAttack() {
+        return canAttack;
+    }
+
+    public void setCanAttack(boolean canAttack) {
+        this.canAttack = canAttack;
+    }
+
+    public PlayerInfo getMaster() {
+        return master;
+    }
+
+    public void setMaster(PlayerInfo master) {
         this.master = master;
     }
 

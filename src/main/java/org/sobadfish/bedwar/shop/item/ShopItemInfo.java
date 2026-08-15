@@ -14,7 +14,7 @@ import java.util.List;
  * @author SoBadFish
  * 2022/1/5
  */
-@Getter
+
 public class ShopItemInfo {
 
     private final String shopName;
@@ -59,4 +59,11 @@ public class ShopItemInfo {
         return new ShopItemInfo(shopName,shopInfoConfigs);
     }
 
+    public String getShopName() {
+        return shopName;
+    }
+
+    public ArrayList<ShopInfoConfig> getShopInfoConfigs() {
+        return shopInfoConfigs;
+    }
 }

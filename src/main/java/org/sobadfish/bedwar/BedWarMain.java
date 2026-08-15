@@ -46,27 +46,24 @@ public class BedWarMain extends PluginBase {
         LANGUAGE_LIST.add("chs");
     }
 
-    @Getter
+
     private static BedWarMain bedWarMain;
 
-    @Getter
     private static RoomManager roomManager;
 
-    @Getter
+
     private static MenuRoomManager menuRoomManager;
 
-    @Getter
+
     private static PlayerDataManager dataManager;
 
-    @Getter
     private static PlayerTopManager topManager;
 
 
-    @Getter
     private static RecordManager recordManager;
 
 
-    @Getter
+
     public static LanguageManager language;
 
     public static UiType uiType;
@@ -142,6 +139,12 @@ public class BedWarMain extends PluginBase {
 
             }catch (Exception ignore){}
 
+            try{
+                Class.forName("me.coolmagic233.parties.Parties");
+                getServer().getPluginManager().registerEvents(new org.sobadfish.bedwar.listener.PartyListener(), this);
+                sendMessageToConsole("&aParties hook enabled");
+            }catch (Exception ignore){}
+
 
 
         }
@@ -182,6 +185,59 @@ public class BedWarMain extends PluginBase {
         enableRecord = this.getConfig().getBoolean("enable-Record");
         this.getLogger().info(TextFormat.colorize('&',BedWarMain.getLanguage().getLanguage("success","&a起床战争插件加载完成，祝您使用愉快")));
 
+    }
+
+
+    public static BedWarMain getBedWarMain() {
+        return bedWarMain;
+    }
+
+    public static RoomManager getRoomManager() {
+        return roomManager;
+    }
+
+    public static MenuRoomManager getMenuRoomManager() {
+        return menuRoomManager;
+    }
+
+    public static PlayerDataManager getDataManager() {
+        return dataManager;
+    }
+
+    public static PlayerTopManager getTopManager() {
+        return topManager;
+    }
+
+    public static RecordManager getRecordManager() {
+        return recordManager;
+    }
+
+    public static LanguageManager getLanguage() {
+        return language;
+    }
+
+    public static UiType getUiType() {
+        return uiType;
+    }
+
+    public static String getCommandName() {
+        return COMMAND_NAME;
+    }
+
+    public static String getCommandAdminName() {
+        return COMMAND_ADMIN_NAME;
+    }
+
+    public static String getCommandMessageName() {
+        return COMMAND_MESSAGE_NAME;
+    }
+
+    public static int getUpExp() {
+        return upExp;
+    }
+
+    public static boolean isEnableRecord() {
+        return enableRecord;
     }
 
     public void initSkin(){

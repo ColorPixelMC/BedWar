@@ -14,9 +14,10 @@ import cn.nukkit.level.Sound;
 import cn.nukkit.math.BlockFace;
 import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.potion.Effect;
-import de.theamychan.scoreboard.network.Scoreboard;
-import lombok.Getter;
-import lombok.Setter;
+import cn.nukkit.scoreboard.scoreboard.Scoreboard;
+import me.coolmagic233.parties.Parties;
+import me.coolmagic233.parties.api.PartiesAPI;
+import me.coolmagic233.parties.model.Party;
 import org.sobadfish.bedwar.BedWarMain;
 import org.sobadfish.bedwar.entity.FloatBlock;
 import org.sobadfish.bedwar.event.*;
@@ -47,8 +48,7 @@ import java.util.stream.Collectors;
  * @author SoBadFish
  * 2022/1/2
  */
-@Getter
-@Setter
+
 public class GameRoom {
 
     public int loadTime = -1;
@@ -94,6 +94,8 @@ public class GameRoom {
 
     private final CopyOnWriteArrayList<PlayerInfo> playerInfos = new CopyOnWriteArrayList<>();
 
+    private final Set<String> partyPlayers = new HashSet<>();
+
     private GameRoom(GameRoomConfig roomConfig){
         this.roomConfig = roomConfig;
         this.worldInfo = new WorldInfo(this,roomConfig.worldInfo);
@@ -112,6 +114,131 @@ public class GameRoom {
 
 
     private boolean isMax;
+
+
+    public int getLoadTime() {
+        return loadTime;
+    }
+
+    public void setLoadTime(int loadTime) {
+        this.loadTime = loadTime;
+    }
+
+    public GameRoomConfig getRoomConfig() {
+        return roomConfig;
+    }
+
+    public EventControl getEventControl() {
+        return eventControl;
+    }
+
+    public boolean isHasStart() {
+        return hasStart;
+    }
+
+    public void setHasStart(boolean hasStart) {
+        this.hasStart = hasStart;
+    }
+
+    public Long getLastLoadTimeMillis() {
+        return lastLoadTimeMillis;
+    }
+
+    public void setLastLoadTimeMillis(Long lastLoadTimeMillis) {
+        this.lastLoadTimeMillis = lastLoadTimeMillis;
+    }
+
+    public WorldInfo getWorldInfo() {
+        return worldInfo;
+    }
+
+    public void setWorldInfo(WorldInfo worldInfo) {
+        this.worldInfo = worldInfo;
+    }
+
+    public boolean isClose() {
+        return close;
+    }
+
+    public void setClose(boolean close) {
+        this.close = close;
+    }
+
+    public boolean isGc() {
+        return isGc;
+    }
+
+    public void setGc(boolean gc) {
+        isGc = gc;
+    }
+
+    public GameType getType() {
+        return type;
+    }
+
+    public void setType(GameType type) {
+        this.type = type;
+    }
+
+    public ShopInfo getShopInfo() {
+        return shopInfo;
+    }
+
+    public void setShopInfo(ShopInfo shopInfo) {
+        this.shopInfo = shopInfo;
+    }
+
+    public ArrayList<TeamInfo> getTeamInfos() {
+        return teamInfos;
+    }
+
+    public ArrayList<BlockChest> getClickChest() {
+        return clickChest;
+    }
+
+    public ArrayList<FloatTextInfo> getFloatTextInfos() {
+        return floatTextInfos;
+    }
+
+    public LinkedHashMap<PlayerInfo, Scoreboard> getScoreboards() {
+        return scoreboards;
+    }
+
+    public int getReSpawnTime() {
+        return reSpawnTime;
+    }
+
+    public void setReSpawnTime(int reSpawnTime) {
+        this.reSpawnTime = reSpawnTime;
+    }
+
+    public Set<String> getPartyPlayers() {
+        return partyPlayers;
+    }
+
+    public boolean isInit() {
+        return isInit;
+    }
+
+    public void setInit(boolean init) {
+        isInit = init;
+    }
+
+    public boolean isMax() {
+        return isMax;
+    }
+
+    public void setMax(boolean max) {
+        isMax = max;
+    }
+
+    public boolean isTeamAll() {
+        return teamAll;
+    }
+
+    public void setTeamAll(boolean teamAll) {
+        this.teamAll = teamAll;
+    }
 
     /** 房间被实例化后 */
     public void onUpdate(){
@@ -493,6 +620,15 @@ public class GameRoom {
             info.init();
             info.getPlayer().getInventory().setItem(TeamChoseItem.getIndex(),TeamChoseItem.get());
             info.getPlayer().getInventory().setItem(RoomQuitItem.getIndex(),RoomQuitItem.get());
+            if(info.getPlayer() instanceof Player && !Server.getInstance().isPrimaryThread()) {
+                final Player fp = (Player) info.getPlayer();
+                Server.getInstance().getScheduler().scheduleTask(BedWarMain.getBedWarMain(), () -> {
+                    if(fp.isOnline()) {
+                        fp.getInventory().setItem(TeamChoseItem.getIndex(), TeamChoseItem.get());
+                        fp.getInventory().setItem(RoomQuitItem.getIndex(), RoomQuitItem.get());
+                    }
+                });
+            }
             info.setPlayerType(PlayerInfo.PlayerType.WAIT);
             info.setGameRoom(this);
             if(info.getPlayer() instanceof Player) {
@@ -512,7 +648,9 @@ public class GameRoom {
             }
             
             if(info.getPlayer() instanceof Player) {
-                ((Player)info.getPlayer()).setGamemode(2);
+                Player p = (Player) info.getPlayer();
+                p.setGamemode(2);
+                p.getInventory().sendContents(p);
             }
             sendMessage(BedWarMain.getLanguage().getLanguage("player-join-room",
                     "[1]&e加入了游戏 &7([2]/[3])",
@@ -548,13 +686,26 @@ public class GameRoom {
         int t =  (int) Math.ceil(playerInfos.size() / (double)getRoomConfig().getTeamConfigs().size());
         PlayerInfo listener;
         LinkedList<PlayerInfo> noTeam = new LinkedList<>(getNoTeamPlayers());
-        // TODO 检测是否一个队伍里有太多的人 拆掉多余的人
         for (TeamInfo manager: teamInfos){
             if(manager.getTeamPlayers().size() > t){
-                int size =  manager.getTeamPlayers().size() - t;
-                for(int i = 0;i < size;i++){
-                    PlayerInfo info = manager.getTeamPlayers().remove(manager.getTeamPlayers().size()-1);
-                    noTeam.add(info);
+                int removeCount = manager.getTeamPlayers().size() - t;
+                for(int i = 0; i < removeCount;){
+                    PlayerInfo info = null;
+                    for(int j = manager.getTeamPlayers().size() - 1; j >= 0; j--){
+                        PlayerInfo candidate = manager.getTeamPlayers().get(j);
+                        if(!partyPlayers.contains(candidate.getName())){
+                            info = candidate;
+                            break;
+                        }
+                    }
+                    if(info != null){
+                        manager.getTeamPlayers().remove(info);
+                        info.setTeamInfo(null);
+                        noTeam.add(info);
+                        i++;
+                    }else{
+                        break;
+                    }
                 }
             }
         }
@@ -572,10 +723,18 @@ public class GameRoom {
                     }
                 }else{
                     if(manager.getTeamPlayers().size() > t){
-                        int size =  manager.getTeamPlayers().size();
-                        LinkedList<PlayerInfo> playerInfos = new LinkedList<>(manager.getTeamPlayers());
-                        for(int i = 0;i <size - t;i++) {
-                            noTeam.add(playerInfos.pollLast());
+                        List<PlayerInfo> toRemove = new ArrayList<>();
+                        for(PlayerInfo p : new ArrayList<>(manager.getTeamPlayers())){
+                            if(!partyPlayers.contains(p.getName())){
+                                toRemove.add(p);
+                            }
+                        }
+                        int need = manager.getTeamPlayers().size() - t;
+                        for(int i = 0; i < need && i < toRemove.size(); i++){
+                            PlayerInfo p = toRemove.get(i);
+                            manager.getTeamPlayers().remove(p);
+                            p.setTeamInfo(null);
+                            noTeam.add(p);
                         }
                     }
                 }
@@ -609,6 +768,7 @@ public class GameRoom {
      * */
     public boolean quitPlayerInfo(PlayerInfo info,boolean teleport){
         if(info != null) {
+            partyPlayers.remove(info.getName());
             info.isLeave = true;
             if (info.getPlayer() instanceof Player) {
                 if (playerInfos.contains(info)) {
@@ -624,6 +784,22 @@ public class GameRoom {
                             }
                             info.getPlayer().removeAllEffects();
                             ((Player) info.getPlayer()).setExperience(0, 0);
+                            PartiesAPI api = Parties.getInstance().getApi();
+                            Party party = api.getPartyForPlayer(info.getPlayer().getUniqueId());
+                            if (party != null){
+                                if (party.getLeader().toString().equals(info.getPlayer().getUniqueId().toString())){
+                                    for (UUID member : party.getMembers()) {
+                                        if (member.toString().equals(info.getPlayer().getUniqueId().toString())){
+                                            continue;
+                                        }
+                                        for (PlayerInfo playerInfo : getIPlayerInfos()) {
+                                            if (playerInfo.getPlayer().getUniqueId().equals(member.toString())){
+                                                quitPlayerInfo(playerInfo,teleport);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         BedWarMain.getRoomManager().playerJoin.remove(info.getPlayer().getName());
@@ -664,6 +840,14 @@ public class GameRoom {
     public CopyOnWriteArrayList<PlayerInfo> getPlayerInfos() {
         playerInfos.removeIf((p)->p.disable);
         return playerInfos;
+    }
+
+    public void addPartyPlayer(String playerName) {
+        partyPlayers.add(playerName);
+    }
+
+    public void removePartyPlayer(String playerName) {
+        partyPlayers.remove(playerName);
     }
 
     public List<PlayerInfo> getIPlayerInfos() {

@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
  * @author SoBadFish
  * 2022/1/2
  */
-@Data
+
 public class TeamInfo {
 
     private TeamInfoConfig teamConfig;
@@ -168,6 +168,75 @@ public class TeamInfo {
     public void addSound(Sound sound){
         teamPlayers.forEach(playerInfo ->
                 playerInfo.addSound(sound));
+    }
+
+
+    public TeamInfoConfig getTeamConfig() {
+        return teamConfig;
+    }
+
+    public void setTeamConfig(TeamInfoConfig teamConfig) {
+        this.teamConfig = teamConfig;
+    }
+
+    public boolean isBadExists() {
+        return badExists;
+    }
+
+    public void setBadExists(boolean badExists) {
+        this.badExists = badExists;
+    }
+
+    public LinkedHashMap<Integer, Item> getpEnderChest() {
+        return pEnderChest;
+    }
+
+    public void setpEnderChest(LinkedHashMap<Integer, Item> pEnderChest) {
+        this.pEnderChest = pEnderChest;
+    }
+
+    public List<Position> getPlaceEnderChest() {
+        return placeEnderChest;
+    }
+
+    public void setPlaceEnderChest(List<Position> placeEnderChest) {
+        this.placeEnderChest = placeEnderChest;
+    }
+
+    public List<BlockPosition> getBlockPositions() {
+        return blockPositions;
+    }
+
+    public void setBlockPositions(List<BlockPosition> blockPositions) {
+        this.blockPositions = blockPositions;
+    }
+
+    public boolean isStop() {
+        return stop;
+    }
+
+    public void setStop(boolean stop) {
+        this.stop = stop;
+    }
+
+    public boolean isClose() {
+        return close;
+    }
+
+    public void setClose(boolean close) {
+        this.close = close;
+    }
+
+    public GameRoom getRoom() {
+        return room;
+    }
+
+    public void setTeamPlayers(ArrayList<PlayerInfo> teamPlayers) {
+        this.teamPlayers = teamPlayers;
+    }
+
+    public ArrayList<TeamEffectInfo> getTeamEffects() {
+        return teamEffects;
     }
 
     public void onUpdate(){

@@ -18,7 +18,7 @@ import java.util.Map;
  * 2022/1/2
  */
 
-@Getter
+
 public class ShopInfoConfig {
 
     /**
@@ -27,6 +27,14 @@ public class ShopInfoConfig {
     private final ShopItemClassify classify;
 
     //TODO 转换为窗口
+
+    public ShopItemClassify getClassify() {
+        return classify;
+    }
+
+    public ArrayList<BasePlayPanelItemInstance> getShopItems() {
+        return shopItems;
+    }
 
     private final ArrayList<BasePlayPanelItemInstance> shopItems;
 
@@ -50,7 +58,7 @@ public class ShopInfoConfig {
     }
 
 
-    @Getter
+
     public static class ShopItemClassify{
 
         public String type;
@@ -71,6 +79,25 @@ public class ShopInfoConfig {
             this.disPlayerName = disPlayerName;
         }
 
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public void setDisPlayerName(String disPlayerName) {
+            this.disPlayerName = disPlayerName;
+        }
+
+        public void setItem(Item item) {
+            this.item = item;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public String getDisPlayerName() {
+            return disPlayerName;
+        }
 
         @Override
         public boolean equals(Object o) {

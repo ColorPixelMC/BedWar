@@ -6,19 +6,19 @@
 # eventTime 为事件倒计时 单位为秒
 eventLists:
   - type: "time"
-    display: "钻石点升级 II 级"
+    display: "§a钻石点升级 II 级"
     eventTime: 220
     value: "钻石:800"
   - type: "time"
-    display: "钻石点升级 III 级"
+    display: "§a钻石点升级 III 级"
     eventTime: 260
-    value: "钻石:60"
+    value: "§a钻石:60"
   - type: "time"
-    display: "绿宝石点升级 II 级"
+    display: "§a绿宝石点升级 II 级"
     eventTime: 280
     value: "绿宝石:1000"
   - type: "time"
-    display: "绿宝石点升级 III 级"
+    display: "§a绿宝石点升级 III 级"
     eventTime: 300
     value: "绿宝石:800"
   - type: "break"

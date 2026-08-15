@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @author SoBadFish
  * 2022/1/11
  */
-@Data
+
 public class ShopFrom {
 
     private int id;
@@ -48,6 +48,73 @@ public class ShopFrom {
         this.player = player;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setBreak(boolean aBreak) {
+        isBreak = aBreak;
+    }
+
+    public GameRoomConfig getRoomConfig() {
+        return roomConfig;
+    }
+
+    public void setRoomConfig(GameRoomConfig roomConfig) {
+        this.roomConfig = roomConfig;
+    }
+
+    public ShopItemInfo getShopItemInfo() {
+        return shopItemInfo;
+    }
+
+    public void setShopItemInfo(ShopItemInfo shopItemInfo) {
+        this.shopItemInfo = shopItemInfo;
+    }
+
+    public ShopFrom getLastFrom() {
+        return lastFrom;
+    }
+
+    public void setLastFrom(ShopFrom lastFrom) {
+        this.lastFrom = lastFrom;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public ShopInfoConfig.ShopItemClassify getShopItemClassify() {
+        return shopItemClassify;
+    }
+
+    public void setShopItemClassify(ShopInfoConfig.ShopItemClassify shopItemClassify) {
+        this.shopItemClassify = shopItemClassify;
+    }
+
+    public ArrayList<ShopButton> getShopButtons() {
+        return shopButtons;
+    }
+
+    public void setShopButtons(ArrayList<ShopButton> shopButtons) {
+        this.shopButtons = shopButtons;
+    }
 
     public boolean isBreak() {
         return isBreak;

@@ -21,11 +21,10 @@ import java.util.Map;
 
 public class ItemInfoConfig {
 
-    @Getter
+
     private final MoneyItemInfoConfig moneyItemInfoConfig;
 
-    @Getter
-    @Setter
+
     private int spawnTick;
 
     private final ArrayList<String> positions;
@@ -89,4 +88,15 @@ public class ItemInfoConfig {
         return config;
     }
 
+    public MoneyItemInfoConfig getMoneyItemInfoConfig() {
+        return moneyItemInfoConfig;
+    }
+
+    public int getSpawnTick() {
+        return spawnTick;
+    }
+
+    public void setSpawnTick(int spawnTick) {
+        this.spawnTick = spawnTick;
+    }
 }

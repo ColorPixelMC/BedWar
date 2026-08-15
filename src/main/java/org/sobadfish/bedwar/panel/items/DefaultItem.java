@@ -37,17 +37,41 @@ public class DefaultItem extends BasePlayPanelItemInstance {
 
     public int count;
 
-    @Getter
-    @Setter
+
     private Item[] item;
 
-    @Getter
-    @Setter
+
     public String moneyItem;
 
+    public static String getTAG() {
+        return TAG;
+    }
 
+    public static void setTAG(String TAG) {
+        DefaultItem.TAG = TAG;
+    }
 
-    public DefaultItem(Item[] item,String moneyItem,int count){
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public Item[] getItem() {
+        return item;
+    }
+
+    public void setItem(Item[] item) {
+        this.item = item;
+    }
+
+    public String getMoneyItem() {
+        return moneyItem;
+    }
+
+    public void setMoneyItem(String moneyItem) {
+        this.moneyItem = moneyItem;
+    }
+
+    public DefaultItem(Item[] item, String moneyItem, int count){
         this.item = item;
         this.moneyItem = moneyItem;
         this.count = count;

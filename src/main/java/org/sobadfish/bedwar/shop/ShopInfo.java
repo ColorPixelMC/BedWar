@@ -21,8 +21,7 @@ import java.util.Map;
  * @author SoBadFish
  * 2022/1/2
  */
-@Getter
-@Setter
+
 public class ShopInfo {
 
     private ArrayList<LinkedHashMap<String,String>> configs;
@@ -47,4 +46,19 @@ public class ShopInfo {
 
     }
 
+    public ArrayList<LinkedHashMap<String, String>> getConfigs() {
+        return configs;
+    }
+
+    public void setConfigs(ArrayList<LinkedHashMap<String, String>> configs) {
+        this.configs = configs;
+    }
+
+    public ArrayList<ShopVillage> getShopVillages() {
+        return shopVillages;
+    }
+
+    public void setShopVillages(ArrayList<ShopVillage> shopVillages) {
+        this.shopVillages = shopVillages;
+    }
 }

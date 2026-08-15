@@ -9,7 +9,7 @@ import lombok.Getter;
  * 2022/1/6
  */
 
-@Getter
+
 public class TeamEnchant  extends BaseTeamEffect{
 
     private final Enchantment enchantment;
@@ -19,7 +19,9 @@ public class TeamEnchant  extends BaseTeamEffect{
         this.enchantment = enchantment;
     }
 
-
+    public Enchantment getEnchantment() {
+        return enchantment;
+    }
 
     @Override
     public boolean equals(Object obj) {

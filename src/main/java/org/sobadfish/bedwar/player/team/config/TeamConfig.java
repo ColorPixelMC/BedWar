@@ -12,7 +12,6 @@ import java.util.Map;
  * @author SoBadFish
  * 2022/1/2
  */
-@Data
 public class TeamConfig {
 
     private String name;
@@ -99,4 +98,19 @@ public class TeamConfig {
         return false;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getNameColor() {
+        return nameColor;
+    }
+
+    public Item getBlockWoolColor() {
+        return blockWoolColor;
+    }
+
+    public BlockColor getRgb() {
+        return rgb;
+    }
 }

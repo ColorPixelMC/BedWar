@@ -55,13 +55,6 @@
         </dependency>
 
         <dependency>
-            <groupId>de.theamychan</groupId>
-            <artifactId>ScoreboardAPI</artifactId>
-            <version>1.3-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/[Tips前置(v1.2.7)]ScoreboardAPI-1.3.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>cn.nukkit</groupId>
             <artifactId>Nukkit</artifactId>
             <version>MOT-java8-SNAPSHOT</version>
@@ -106,6 +99,21 @@
 <!--            <systemPath> ${project.basedir}/lib/Ghosty-B20240115-MOT-C1.jar</systemPath>-->
         </dependency>
         <dependency>
+            <groupId>me.coolmagic233.parties</groupId>
+            <artifactId>Parties</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/Parties-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>me.coolmagic233.particles</groupId>
+            <artifactId>Particles</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/Particles-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.32</version>
@@ -116,48 +124,6 @@
     </dependencies>
 
 
-
-    <build>
-        <finalName>${project.artifactId}_v${project.version}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-
-                    <archive>
-                        <addMavenDescriptor>false</addMavenDescriptor>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib</classpathPrefix>
-                        </manifest>
-                        <manifestEntries>
-                            <Class-path>.lib/[Tips前置(v1.2.7)]ScoreboardAPI-1.3.jar</Class-path>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <encoding>${maven.compiler.encoding}</encoding>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>1.18.32</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 
 </project>

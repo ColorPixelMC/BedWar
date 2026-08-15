@@ -27,14 +27,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class ItemInfo {
 
-    @Getter
-    @Setter
+
     private int tick;
 
-    @Getter
+
     private final ItemInfoConfig itemInfoConfig;
 
-    @Setter
+
     private int resetTick = -1;
 
 
@@ -61,6 +60,21 @@ public class ItemInfo {
         return resetTick;
     }
 
+    public int getTick() {
+        return tick;
+    }
+
+    public void setTick(int tick) {
+        this.tick = tick;
+    }
+
+    public ItemInfoConfig getItemInfoConfig() {
+        return itemInfoConfig;
+    }
+
+    public void setResetTick(int resetTick) {
+        this.resetTick = resetTick;
+    }
 
     public static boolean use(MoneyItemInfoConfig info, PlayerInventory inventory, int count){
         if(getCountByInventory(info,inventory) >= count){

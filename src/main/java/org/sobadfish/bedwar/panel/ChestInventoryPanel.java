@@ -26,8 +26,28 @@ public class ChestInventoryPanel extends DoubleChestFakeInventory implements Inv
 
     public int clickSolt;
 
-    @Getter
+
     private Map<Integer, BasePlayPanelItemInstance> panel = new LinkedHashMap<>();
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getClickSolt() {
+        return clickSolt;
+    }
+
+    public void setClickSolt(int clickSolt) {
+        this.clickSolt = clickSolt;
+    }
+
+    public Map<Integer, BasePlayPanelItemInstance> getPanel() {
+        return panel;
+    }
 
     ChestInventoryPanel(PlayerInfo player, InventoryHolder holder, String name) {
         super(holder);

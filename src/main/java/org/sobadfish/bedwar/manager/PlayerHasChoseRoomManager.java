@@ -16,10 +16,10 @@ public class PlayerHasChoseRoomManager {
 
     public boolean cancel = false;
 
-    @Getter
+
     private final ArrayList<String> strings = new ArrayList<>();
 
-    @Getter
+
     private final ArrayList<GameRoomConfig> roomName = new ArrayList<>();
 
     public PlayerHasChoseRoomManager(RandomJoinManager.IPlayerInfo info){
@@ -42,7 +42,25 @@ public class PlayerHasChoseRoomManager {
         roomName.add(room);
     }
 
+    public RandomJoinManager.IPlayerInfo getPlayerInfo() {
+        return playerInfo;
+    }
 
+    public boolean isCancel() {
+        return cancel;
+    }
+
+    public void setCancel(boolean cancel) {
+        this.cancel = cancel;
+    }
+
+    public ArrayList<String> getStrings() {
+        return strings;
+    }
+
+    public ArrayList<GameRoomConfig> getRoomName() {
+        return roomName;
+    }
 
     @Override
     public boolean equals(Object obj) {
